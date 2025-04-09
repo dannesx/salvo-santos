@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "resposta": "Jonas",
+    "pistas": [
+      "Foi acordado de repente",
+      "Ficou no escuro por 3 dias",
+      "Pregou para uma cidade inteira em um único dia"
+    ]
+  },
+  {
+    "id": 2,
+    "resposta": "O filho pródigo",
+    "pistas": [
+      "Achou que sabia o que queria",
+      "Se arrependeu amargamente",
+      "Foi recebido com uma grande festa e um abraço"
+    ]
+  },
+  {
+    "id": 3,
+    "resposta": "Moisés",
+    "pistas": [
+      "Escapou da morte quando bebê",
+      "Foi criado por quem um dia enfrentou",
+      "Abriu caminho seco no meio do mar"
+    ]
+  },
+  {
+    "id": 4,
+    "resposta": "Pentecostes",
+    "pistas": [
+      "Uma promessa cumprida",
+      "Chamas se espalharam sem consumir",
+      "O Espírito desceu e a Igreja levantou"
+    ]
+  },
+  {
+    "id": 5,
+    "resposta": "Davi",
+    "pistas": [
+      "O mais improvável",
+      "Se tornou muito importante",
+      "Derrubou um gigante com uma pedra"
+    ]
+  },
+  {
+    "id": 6,
+    "resposta": "Êxodo",
+    "pistas": [
+      "Começa com gemido, termina com glória",
+      "Fogo, nuvem e montanha",
+      "O livro da saída que virou caminho"
+    ]
+  },
+  {
+    "id": 7,
+    "resposta": "Jerusalém",
+    "pistas": [
+      "Onde o tempo e a eternidade se cruzam",
+      "Já foi destruída, reconstruída e chorada",
+      "Cidade onde o véu se rasgou"
+    ]
+  },
+  {
+    "id": 8,
+    "resposta": "Salmos",
+    "pistas": [
+      "Alegria e desespero se encontram aqui",
+      "Foi citado por Jesus",
+      "É o livro que mais se canta na Bíblia"
+    ]
+  }
+]

@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "trecho": "Com minha vida eu cantarei, da bondade de Deus",
+    "resposta": "Bondade de Deus - IBAB",
+    "pontos": 10,
+    "audio": "audio/bondade-de-deus.mp3"
+  },
+  {
+    "id": 2,
+    "trecho": "Teu nome quero glorificar, Senhor da minha vida",
+    "resposta": "Glorificar - Projeto Sola",
+    "pontos": 10,
+    "audio": "audio/glorificar.mp3"
+  },
+  {
+    "id": 3,
+    "trecho": "Aleluia ao Cristo redivivo, que venceu a morte",
+    "resposta": "Aleluia ao Cristo Redivivo - 272",
+    "pontos": 10,
+    "audio": "audio/aleluia-272.mp3"
+  },
+  {
+    "id": 4,
+    "trecho": "Temos um bondoso amigo, o Senhor Jesus",
+    "resposta": "Bondoso Amigo - 159",
+    "pontos": 10,
+    "audio": "audio/bondoso-amigo.mp3"
+  },
+  {
+    "id": 5,
+    "trecho": "Tua palavra é como água viva, fonte a jorrar",
+    "resposta": "Água Viva - Oficina G3",
+    "pontos": 10,
+    "audio": "audio/agua-viva.mp3"
+  },
+  {
+    "id": 6,
+    "trecho": "Estarás comigo até o fim, meu Senhor",
+    "resposta": "Estarás Comigo - Boanova",
+    "pontos": 10,
+    "audio": "audio/estaras-comigo.mp3"
+  },
+  {
+    "id": 7,
+    "trecho": "Bom estarmos aqui louvando a Deus",
+    "resposta": "Bom Estarmos Aqui - Renascer Praise",
+    "pontos": 10,
+    "audio": "audio/bom-estarmos-aqui.mp3"
+  },
+  {
+    "id": 8,
+    "trecho": "A Ele a glória, para sempre amém",
+    "resposta": "A Ele a Glória - Diante do Trono",
+    "pontos": 10,
+    "audio": "audio/a-ele-a-gloria.mp3"
+  },
+  {
+    "id": 9,
+    "trecho": "Reina em mim com Teu poder",
+    "resposta": "Reina em Mim - Vineyard",
+    "pontos": 10,
+    "audio": "audio/reina-em-mim.mp3"
+  },
+  {
+    "id": 10,
+    "trecho": "Nos reunimos em ajuntamento, com louvor",
+    "resposta": "Ajuntamento - Vencedores por Cristo",
+    "pontos": 10,
+    "audio": "audio/ajuntamento.mp3"
+  }
+]

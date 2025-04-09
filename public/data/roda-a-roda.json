@@ -1,0 +1,83 @@
+[
+  {
+    "id": 1,
+    "palavra": [
+      "Trabalhadores",
+      "Semeador",
+      "Dracma perdida"
+    ],
+    "dica": "Parábolas"
+  },
+  {
+    "id": 2,
+    "palavra": [
+      "Sinai",
+      "Oliveiras",
+      "Moria"
+    ],
+    "dica": "Montes"
+  },
+  {
+    "id": 3,
+    "palavra": [
+      "Romanos",
+      "Timoteo",
+      "Tessalonicenses"
+    ],
+    "dica": "Novo Testamento"
+  },
+  {
+    "id": 4,
+    "palavra": [
+      "Fidelidade",
+      "Alegria",
+      "Bondade"
+    ],
+    "dica": "Frutos do Espírito"
+  },
+  {
+    "id": 5,
+    "palavra": [
+      "Hananias",
+      "Misael",
+      "Azarias"
+    ],
+    "dica": "Fornalha"
+  },
+  {
+    "id": 6,
+    "palavra": [
+      "Levitico",
+      "Proverbios",
+      "Sofonias"
+    ],
+    "dica": "Antigo Testamento"
+  },
+  {
+    "id": 7,
+    "palavra": [
+      "Jeremias",
+      "Samuel",
+      "Elias"
+    ],
+    "dica": "Profetas"
+  },
+  {
+    "id": 8,
+    "palavra": [
+      "Impureza",
+      "Prostituicao",
+      "Feiticarias"
+    ],
+    "dica": "Obras da carne"
+  },
+  {
+    "id": 9,
+    "palavra": [
+      "Boa",
+      "Perfeita",
+      "Agradavel"
+    ],
+    "dica": "Vontade de Deus"
+  }
+]
