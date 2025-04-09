@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button"
 import { usePlacar } from "@/contexts/placar-context"
 import { useNavigate } from "react-router-dom" // Importação do hook useNavigate
 import confetti from "canvas-confetti" // Importação do confetti
+import { useAppContext } from "@/contexts/app-context" // Importação do contexto da aplicação
 
 interface Rodada {
   id: number
@@ -17,6 +18,7 @@ export default function JogoDas3Pistas() {
   const [revelar, setRevelar] = useState(false)
   const { setRodadaAtual } = usePlacar()
   const navigate = useNavigate() // Inicialização do hook useNavigate
+  const { equipeAtual, alternarEquipe } = useAppContext() // Inicialização do contexto da aplicação
 
   // Referências para os áudios
   const audioSelect = useRef<HTMLAudioElement | null>(null)
@@ -46,6 +48,7 @@ export default function JogoDas3Pistas() {
     } else {
       navigate("/ranking") // Redireciona para /ranking ao final das rodadas
     }
+    alternarEquipe() // Alterna a vez da equipe
   }
 
   const mostrarProximaPista = () => {
@@ -73,6 +76,9 @@ export default function JogoDas3Pistas() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-[70vh] gap-10 text-center">
+      <div className="text-lg font-semibold text-blue-500">
+        Vez da equipe: {equipeAtual}
+      </div>
       {/* Áudios */}
       <audio ref={audioSelect} src="/sounds/select.ogg" preload="auto" />
       <audio ref={audioWin} src="/sounds/win.ogg" preload="auto" />

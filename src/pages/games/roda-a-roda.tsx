@@ -7,6 +7,7 @@ import confetti from "canvas-confetti"
 import { motion } from "framer-motion"
 import { useNavigate } from "react-router-dom"
 import { RoletaModal } from "@/components/roleta"
+import { useAppContext } from "@/contexts/app-context"
 
 interface Rodada {
   id: number
@@ -25,6 +26,7 @@ export default function RodaARoda() {
   const [confeteAtivado, setConfeteAtivado] = useState(false)
   const [mostrarRoleta, setMostrarRoleta] = useState(false)
   const { setRodadaAtual, rodadaAtual } = usePlacar()
+  const { equipeAtual, alternarEquipe } = useAppContext()
   const navigate = useNavigate()
 
   // Sons
@@ -106,6 +108,7 @@ export default function RodaARoda() {
     }
 
     setLetra("")
+    alternarEquipe() // Alterna a vez da equipe após a tentativa
   }
 
   const proximaRodada = () => {
@@ -203,6 +206,10 @@ export default function RodaARoda() {
 
       <div className="text-lg font-semibold text-yellow-400">
         Atual: {rodadaAtual} pontos
+      </div>
+
+      <div className="text-lg font-semibold text-blue-500">
+        Vez da equipe: {equipeAtual}
       </div>
 
       <div className="flex gap-4 items-center">

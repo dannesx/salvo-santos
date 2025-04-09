@@ -4,6 +4,7 @@ import { usePlacar } from "@/contexts/placar-context"
 import { useNavigate } from "react-router-dom" // Importação do hook useNavigate
 import confetti from "canvas-confetti" // Importação do confetti
 import winSound from "/sounds/win.ogg" // Certifique-se de que o caminho está correto
+import { useAppContext } from "@/contexts/app-context" // Importação do contexto do aplicativo
 
 interface Rodada {
   id: number
@@ -21,6 +22,7 @@ export default function QualEMusica() {
   const audioRef = useRef<HTMLAudioElement | null>(null)
   const [tocando, setTocando] = useState(false)
   const navigate = useNavigate() // Inicialização do hook useNavigate
+  const { equipeAtual, alternarEquipe } = useAppContext() // Inicialização do contexto do aplicativo
 
   useEffect(() => {
     fetch("/data/qual-e-a-musica.json")
@@ -53,6 +55,7 @@ export default function QualEMusica() {
     } else {
       navigate("/ranking") // Redireciona para /ranking ao final das rodadas
     }
+    alternarEquipe() // Alterna a vez da equipe
   }
 
   const toggleAudio = () => {
@@ -81,6 +84,9 @@ export default function QualEMusica() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-[70vh] gap-10 text-center">
+      <div className="text-lg font-semibold text-blue-500">
+        Vez da equipe: {equipeAtual}
+      </div>
       <audio ref={audioRef} preload="auto" />
 
       <h2 className="text-3xl font-bold max-w-xl">

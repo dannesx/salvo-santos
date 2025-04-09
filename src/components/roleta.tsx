@@ -2,7 +2,7 @@ import { motion } from "framer-motion"
 import { useState, useEffect, useRef } from "react" // Adicionado useRef
 import confetti from "canvas-confetti" // Importação do confetti
 
-const valores = ["Passa a vez", 20, 20, 20, 30, 30, 40, 40, 50, 100]
+const valores = ["Passa a vez", 2, 2, 2, 3, 3, 4, 4, 5, 10]
 const anguloPorSetor = 360 / valores.length
 
 interface RoletaModalProps {
