@@ -7,7 +7,7 @@ export default function ConfigPage() {
 
   const atualizarNomeEquipe = (index: number, novoNome: string) => {
     const novasEquipes = [...equipes]
-    novasEquipes[index] = novoNome
+    novasEquipes[index] = { ...novasEquipes[index], nome: novoNome } // Atualiza apenas o nome da equipe
     setEquipes(novasEquipes)
   }
 
@@ -23,7 +23,7 @@ export default function ConfigPage() {
             </label>
             <Input
               id={`equipe-${index}`}
-              value={equipe}
+              value={equipe.nome}
               onChange={(e) => atualizarNomeEquipe(index, e.target.value)}
             />
           </div>

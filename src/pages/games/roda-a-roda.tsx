@@ -1,13 +1,12 @@
 import { useEffect, useState, type JSX, useRef } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { usePlacar } from "@/contexts/placar-context"
 import { Loader2 } from "lucide-react"
 import confetti from "canvas-confetti"
 import { motion } from "framer-motion"
 import { useNavigate } from "react-router-dom"
 import { RoletaModal } from "@/components/roleta"
-import { useAppContext } from "@/contexts/app-context"
+import { useAppContext } from "@/contexts/app-context" // Atualizado para usar AppContext
 
 interface Rodada {
   id: number
@@ -25,8 +24,7 @@ export default function RodaARoda() {
   const [erradas, setErradas] = useState<string[]>([])
   const [confeteAtivado, setConfeteAtivado] = useState(false)
   const [mostrarRoleta, setMostrarRoleta] = useState(false)
-  const { setRodadaAtual, rodadaAtual } = usePlacar()
-  const { equipeAtual, alternarEquipe } = useAppContext()
+  const { setRodadaAtual, rodadaAtual, equipeAtual, alternarEquipe } = useAppContext() // Usando AppContext
   const navigate = useNavigate()
 
   // Sons

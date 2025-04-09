@@ -1,6 +1,5 @@
 import { useEffect, useState, useRef } from "react"
 import { Button } from "@/components/ui/button"
-import { usePlacar } from "@/contexts/placar-context"
 import { useNavigate } from "react-router-dom" // Importação do hook useNavigate
 import confetti from "canvas-confetti" // Importação do confetti
 import { useAppContext } from "@/contexts/app-context" // Importação do contexto da aplicação
@@ -16,9 +15,8 @@ export default function JogoDas3Pistas() {
   const [indice, setIndice] = useState(0)
   const [pistaAtual, setPistaAtual] = useState(0)
   const [revelar, setRevelar] = useState(false)
-  const { setRodadaAtual } = usePlacar()
   const navigate = useNavigate() // Inicialização do hook useNavigate
-  const { equipeAtual, alternarEquipe } = useAppContext() // Inicialização do contexto da aplicação
+  const { equipeAtual, alternarEquipe, setRodadaAtual } = useAppContext() // Adicionado rodadaAtual e setRodadaAtual do contexto
 
   // Referências para os áudios
   const audioSelect = useRef<HTMLAudioElement | null>(null)
@@ -33,7 +31,7 @@ export default function JogoDas3Pistas() {
 
   useEffect(() => {
     const pontos = [10, 9, 8]
-    setRodadaAtual(pontos[pistaAtual] || 0)
+    setRodadaAtual(pontos[pistaAtual] || 0) // Atualiza rodadaAtual diretamente no contexto
   }, [pistaAtual, setRodadaAtual])
 
   const rodada = rodadas[indice]

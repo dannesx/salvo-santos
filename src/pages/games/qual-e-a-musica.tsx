@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react"
 import { Button } from "@/components/ui/button"
-import { usePlacar } from "@/contexts/placar-context"
 import { useNavigate } from "react-router-dom" // Importação do hook useNavigate
 import confetti from "canvas-confetti" // Importação do confetti
 import winSound from "/sounds/win.ogg" // Certifique-se de que o caminho está correto
@@ -18,11 +17,10 @@ export default function QualEMusica() {
   const [rodadas, setRodadas] = useState<Rodada[]>([])
   const [indice, setIndice] = useState(0)
   const [revelar, setRevelar] = useState(false)
-  const { setRodadaAtual } = usePlacar()
   const audioRef = useRef<HTMLAudioElement | null>(null)
   const [tocando, setTocando] = useState(false)
   const navigate = useNavigate() // Inicialização do hook useNavigate
-  const { equipeAtual, alternarEquipe } = useAppContext() // Inicialização do contexto do aplicativo
+  const { equipeAtual, alternarEquipe, setRodadaAtual } = useAppContext() // Usando AppContext
 
   useEffect(() => {
     fetch("/data/qual-e-a-musica.json")
@@ -33,7 +31,7 @@ export default function QualEMusica() {
   useEffect(() => {
     const rodada = rodadas[indice]
     if (rodada) {
-      setRodadaAtual(rodada.pontos ?? 100)
+      setRodadaAtual(rodada.pontos ?? 100) // Atualiza rodadaAtual no contexto
       if (audioRef.current) {
         audioRef.current.src = rodada.audio
       }

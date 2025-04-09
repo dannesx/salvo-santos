@@ -1,12 +1,10 @@
 import Header from "@/components/header"
 import Score from "@/components/score"
 import { Outlet } from "react-router"
-import { useAppContext } from "@/contexts/app-context"
-import { usePlacar } from "@/contexts/placar-context"
+import { useAppContext } from "@/contexts/app-context" // Usando AppContext
 
 const AppLayout = () => {
-  const { equipes: nomesEquipes } = useAppContext()
-  const { equipes } = usePlacar()
+  const { equipes } = useAppContext() // Obtendo equipes do AppContext
 
   return (
     <main className="w-screen container mx-auto px-4 relative min-h-screen">
@@ -15,8 +13,8 @@ const AppLayout = () => {
       <Outlet />
 
       {/* Exibe os placares das equipes */}
-      <Score side="left" name={nomesEquipes[0]} score={equipes[0]?.pontuacao || 0} />
-      <Score side="right" name={nomesEquipes[1]} score={equipes[1]?.pontuacao || 0} />
+      <Score side="left" name={equipes[0]?.nome} score={equipes[0]?.pontuacao || 0} />
+      <Score side="right" name={equipes[1]?.nome} score={equipes[1]?.pontuacao || 0} />
     </main>
   )
 }
