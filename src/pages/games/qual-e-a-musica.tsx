@@ -20,7 +20,7 @@ export default function QualEMusica() {
   const audioRef = useRef<HTMLAudioElement | null>(null)
   const [tocando, setTocando] = useState(false)
   const navigate = useNavigate() // Inicialização do hook useNavigate
-  const { equipeAtual, alternarEquipe, setRodadaAtual } = useAppContext() // Usando AppContext
+  const { setRodadaAtual, equipes, pontuar } = useAppContext() // Adicionado equipes e pontuar do contexto
 
   useEffect(() => {
     fetch("/data/qual-e-a-musica.json")
@@ -53,7 +53,6 @@ export default function QualEMusica() {
     } else {
       navigate("/ranking") // Redireciona para /ranking ao final das rodadas
     }
-    alternarEquipe() // Alterna a vez da equipe
   }
 
   const toggleAudio = () => {
@@ -78,13 +77,16 @@ export default function QualEMusica() {
     confetti({ particleCount: 150, spread: 100, origin: { y: 0.6 } }) // Efeito de confetti
   }
 
+  const handlePontuarEquipe = (equipe: string) => {
+    pontuar(equipe) // Pontua a equipe usando o contexto
+    proximaRodada()
+  }
+
   if (!rodada) return <p className="text-center mt-10">Carregando...</p>
 
   return (
     <div className="flex flex-col items-center justify-center min-h-[70vh] gap-10 text-center">
-      <div className="text-lg font-semibold text-blue-500">
-        Vez da equipe: {equipeAtual}
-      </div>
+      {/* Removida a exibição da vez da equipe */}
       <audio ref={audioRef} preload="auto" />
 
       <h2 className="text-3xl font-bold max-w-xl">
@@ -105,9 +107,14 @@ export default function QualEMusica() {
           <p className="text-3xl font-semibold text-green-400">
             {rodada.resposta}
           </p>
-          <Button onClick={proximaRodada} className="mt-2">
-            Próxima rodada
-          </Button>
+          <div className="flex gap-4">
+            <Button onClick={() => handlePontuarEquipe(equipes[0].nome)}>
+              Pontuar {equipes[0].nome}
+            </Button>
+            <Button onClick={() => handlePontuarEquipe(equipes[1].nome)}>
+              Pontuar {equipes[1].nome}
+            </Button>
+          </div>
         </>
       ) : (
         <Button onClick={handleRevelar} className="mt-2">

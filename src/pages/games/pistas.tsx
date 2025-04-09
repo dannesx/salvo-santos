@@ -15,8 +15,9 @@ export default function JogoDas3Pistas() {
   const [indice, setIndice] = useState(0)
   const [pistaAtual, setPistaAtual] = useState(0)
   const [revelar, setRevelar] = useState(false)
+  // Estado para controlar se a vez foi passada (removido porque não é utilizado)
   const navigate = useNavigate() // Inicialização do hook useNavigate
-  const { equipeAtual, alternarEquipe, setRodadaAtual } = useAppContext() // Adicionado rodadaAtual e setRodadaAtual do contexto
+  const { equipeAtual, alternarEquipe, setRodadaAtual, pontuar } = useAppContext() // Adicionado pontuar do contexto
 
   // Referências para os áudios
   const audioSelect = useRef<HTMLAudioElement | null>(null)
@@ -30,7 +31,7 @@ export default function JogoDas3Pistas() {
   }, [])
 
   useEffect(() => {
-    const pontos = [10, 9, 8]
+    const pontos = [10, 9, 8, 7]
     setRodadaAtual(pontos[pistaAtual] || 0) // Atualiza rodadaAtual diretamente no contexto
   }, [pistaAtual, setRodadaAtual])
 
@@ -40,6 +41,7 @@ export default function JogoDas3Pistas() {
     audioNext.current?.play() // Toca o som de próxima rodada
     setRevelar(false)
     setPistaAtual(0)
+    // Reseta o estado de vez passada (removido porque não é utilizado)
 
     if (indice + 1 < rodadas.length) {
       setIndice((prev) => prev + 1)
@@ -53,6 +55,16 @@ export default function JogoDas3Pistas() {
     if (pistaAtual < 2) {
       audioSelect.current?.play() // Toca o som de seleção
       setPistaAtual((prev) => prev + 1)
+      alternarEquipe() // Alterna a vez da equipe
+    }
+  }
+
+  const passarVez = () => {
+    if (pistaAtual < 2) {
+      setPistaAtual((prev) => prev + 1) // Avança para a próxima pista
+    } else {
+      // Marca que a vez foi passada na última pista (removido porque não é utilizado)
+      alternarEquipe() // Alterna a vez da equipe
     }
   }
 
@@ -60,6 +72,8 @@ export default function JogoDas3Pistas() {
     audioWin.current?.play() // Toca o som de vitória
     setRevelar(true)
     confetti({ particleCount: 150, spread: 100, origin: { y: 0.6 } }) // Efeito de confetti
+    pontuar(equipeAtual, pistaAtual) // Pontua a equipe atual
+    // Reseta o estado de vez passada (removido porque não é utilizado)
   }
 
   const handleBotaoPrincipal = () => {
@@ -74,9 +88,6 @@ export default function JogoDas3Pistas() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-[70vh] gap-10 text-center">
-      <div className="text-lg font-semibold text-blue-500">
-        Vez da equipe: {equipeAtual}
-      </div>
       {/* Áudios */}
       <audio ref={audioSelect} src="/sounds/select.ogg" preload="auto" />
       <audio ref={audioWin} src="/sounds/win.ogg" preload="auto" />
@@ -101,9 +112,14 @@ export default function JogoDas3Pistas() {
       )}
 
       <div className="flex gap-4">
-        {pistaAtual < 2 && !revelar && (
+        {!revelar && pistaAtual < 2 && (
           <Button variant="secondary" onClick={mostrarProximaPista}>
             Mostrar próxima pista
+          </Button>
+        )}
+        {!revelar && pistaAtual === 2 && (
+          <Button variant="secondary" onClick={passarVez}>
+            Passar vez
           </Button>
         )}
         <Button onClick={handleBotaoPrincipal}>
