@@ -7,7 +7,7 @@ import { useAppContext } from "@/contexts/app-context" // Importação do contex
 
 interface Rodada {
   id: number
-  trecho: string
+  trecho: string[]
   resposta: string
   pontos?: number
   audio: string // Caminho para o arquivo de áudio
@@ -37,6 +37,13 @@ export default function QualEMusica() {
       }
     }
   }, [indice, rodadas, setRodadaAtual])
+
+  useEffect(() => {
+    const rodada = rodadas[indice]
+    if (rodada && audioRef.current) {
+      audioRef.current.src = `/${rodada.audio}` // Ajusta o caminho do áudio
+    }
+  }, [indice, rodadas])
 
   const rodada = rodadas[indice]
 
@@ -73,12 +80,16 @@ export default function QualEMusica() {
 
   const handleRevelar = () => {
     setRevelar(true)
+    if (audioRef.current && tocando) {
+      audioRef.current.pause() // Para a música
+      setTocando(false) // Atualiza o estado para refletir que a música parou
+    }
     playWinSound() // Toca o som ao revelar
     confetti({ particleCount: 150, spread: 100, origin: { y: 0.6 } }) // Efeito de confetti
   }
 
   const handlePontuarEquipe = (equipe: string) => {
-    pontuar(equipe) // Pontua a equipe usando o contexto
+    pontuar(equipe, rodada.pontos ?? 5) // Pontua a equipe com o valor de pontos da rodada ou 100
     proximaRodada()
   }
 
@@ -89,8 +100,10 @@ export default function QualEMusica() {
       {/* Removida a exibição da vez da equipe */}
       <audio ref={audioRef} preload="auto" />
 
-      <h2 className="text-3xl font-bold max-w-xl">
-        {revelar ? `"${rodada.trecho}"` : "Ouça a melodia e tente adivinhar!"}
+      <h2 className="text-4xl font-bold max-w-4xl leading-12">
+        {revelar
+          ? rodada.trecho.map((verso, index) => <p key={index}>{verso}</p>)
+          : "Ouça a melodia e tente adivinhar!"}
       </h2>
 
       {!revelar && (
@@ -104,12 +117,18 @@ export default function QualEMusica() {
 
       {revelar ? (
         <>
-          <p className="text-3xl font-semibold text-green-400">
+          <p className="text-4xl font-semibold text-green-400">
             {rodada.resposta}
           </p>
           <div className="flex gap-4">
             <Button onClick={() => handlePontuarEquipe(equipes[0].nome)}>
               Pontuar {equipes[0].nome}
+            </Button>
+            <Button
+              onClick={proximaRodada}
+              className="bg-red-500 hover:bg-red-600"
+            >
+              Próxima Rodada
             </Button>
             <Button onClick={() => handlePontuarEquipe(equipes[1].nome)}>
               Pontuar {equipes[1].nome}

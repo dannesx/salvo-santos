@@ -5,7 +5,7 @@ import { AppContext } from "@/contexts/app-context"
 import selectSound from "/sounds/select.ogg" // Certifique-se de que o caminho está correto
 
 const jogos = [
-  { nome: "Qual é a Música", emoji: "🎵", path: "/jogos/musica" },
+  { nome: "Qual é o Hino?", emoji: "🎵", path: "/jogos/musica" },
   { nome: "Jogo das 3 Pistas", emoji: "3️⃣", path: "/jogos/pistas" },
   { nome: "Roda a Roda", emoji: "🎡", path: "/jogos/roda" },
 ]

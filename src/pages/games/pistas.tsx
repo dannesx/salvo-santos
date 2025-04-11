@@ -72,8 +72,8 @@ export default function JogoDas3Pistas() {
     audioWin.current?.play() // Toca o som de vitória
     setRevelar(true)
     confetti({ particleCount: 150, spread: 100, origin: { y: 0.6 } }) // Efeito de confetti
-    pontuar(equipeAtual, pistaAtual) // Pontua a equipe atual
-    // Reseta o estado de vez passada (removido porque não é utilizado)
+    const pontosPorPista = [10, 9, 8, 7] // Pontos para cada tentativa
+    pontuar(equipeAtual, pontosPorPista[pistaAtual] || 0) // Pontua a equipe atual com base na pista
   }
 
   const handleBotaoPrincipal = () => {

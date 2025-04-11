@@ -14,7 +14,7 @@ type AppContextType = {
   setEquipes: (value: Equipe[]) => void
   rodadaAtual: number
   setRodadaAtual: (valor: number) => void
-  pontuar: (nome: string, pistaAtual: number) => void
+  pontuar: (nome: string, pontos: number) => void
   atualizarPontuacao: (nome: string, novaPontuacao: number) => void
   resetar: () => void
 }
@@ -56,9 +56,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
     )
   }
 
-  const pontuar = (nome: string, pistaAtual: number) => {
-    const pontosPorPista = [10, 9, 8, 7] // Pontos para cada tentativa
-    const pontos = pistaAtual === 3 ? 7 : pontosPorPista[pistaAtual] || 0 // Garante 7 pontos na 4ª tentativa
+  const pontuar = (nome: string, pontos: number) => {
     setEquipes((prev) =>
       prev.map((e) =>
         e.nome === nome ? { ...e, pontuacao: e.pontuacao + pontos } : e

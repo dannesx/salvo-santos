@@ -1,72 +1,142 @@
 [
   {
     "id": 1,
-    "trecho": "Com minha vida eu cantarei, da bondade de Deus",
-    "resposta": "Bondade de Deus - IBAB",
-    "pontos": 10,
-    "audio": "audio/bondade-de-deus.mp3"
+    "trecho": [
+      "“As ondas atendem ao meu mandar: sossegai!",
+      "Seja o encapelado mar,",
+      "A ira dos homens, o gênio do mal,",
+      "Tais águas não podem a nau tragar,",
+      "Que leva o Senhor, Rei do céu e mar!",
+      "Pois todos ouvem o meu mandar:",
+      "Sossegai! Sossegai!",
+      "Convosco estou para vos salvar; sossegai!”"
+    ],
+    "resposta": "254 · Sossegai",
+    "pontos": 5,
+    "audio": "hinos/254.mp3"
   },
   {
     "id": 2,
-    "trecho": "Teu nome quero glorificar, Senhor da minha vida",
-    "resposta": "Glorificar - Projeto Sola",
-    "pontos": 10,
-    "audio": "audio/glorificar.mp3"
+    "trecho": [
+      "Exaltado seja nosso Deus e Pai!",
+      "Exaltado! Para sempre o exaltai!",
+      "Cantem, louvem lá nos céus",
+      "Nosso Deus e Rei Jesus!",
+      "Exaltado seja Deus, santo! Santo!"
+    ],
+    "resposta": "014 · Louvor e Exaltação",
+    "pontos": 5,
+    "audio": "hinos/014.mp3"
   },
   {
     "id": 3,
-    "trecho": "Aleluia ao Cristo redivivo, que venceu a morte",
-    "resposta": "Aleluia ao Cristo Redivivo - 272",
-    "pontos": 10,
-    "audio": "audio/aleluia-272.mp3"
+    "trecho": [
+      "Mais perto da tua cruz",
+      "Quero estar, ó Salvador!",
+      "Mais perto da tua cruz",
+      "Eu desejo estar, Senhor."
+    ],
+    "resposta": "222 · Mais Perto da Cruz",
+    "pontos": 5,
+    "audio": "hinos/222.mp3"
   },
   {
     "id": 4,
-    "trecho": "Temos um bondoso amigo, o Senhor Jesus",
-    "resposta": "Bondoso Amigo - 159",
-    "pontos": 10,
-    "audio": "audio/bondoso-amigo.mp3"
+    "trecho": [
+      "Nunca meus lábios cessarão, ó Cristo,",
+      "De bendizer-te, de cantar-te glória;",
+      "Pois guardo na alma teu amor imenso.",
+      "Grata memória!"
+    ],
+    "resposta": "064 · Grata Memória",
+    "pontos": 5,
+    "audio": "hinos/064.mp3"
   },
   {
     "id": 5,
-    "trecho": "Tua palavra é como água viva, fonte a jorrar",
-    "resposta": "Água Viva - Oficina G3",
-    "pontos": 10,
-    "audio": "audio/agua-viva.mp3"
+    "trecho": [
+      "Noite de paz! Noite de amor!",
+      "Tudo dorme em derredor.",
+      "Entre os astros que espargem a luz,",
+      "Proclamando o Menino Jesus,",
+      "Brilha a estrela da paz! (bis)"
+    ],
+    "resposta": "243 · Noite de Paz",
+    "pontos": 5,
+    "audio": "hinos/243.mp3"
   },
   {
     "id": 6,
-    "trecho": "Estarás comigo até o fim, meu Senhor",
-    "resposta": "Estarás Comigo - Boanova",
-    "pontos": 10,
-    "audio": "audio/estaras-comigo.mp3"
+    "trecho": [
+      "Mais, mais de Cristo! Mais, mais de Cristo!",
+      "Mais do seu puro e santo amor,",
+      "Mais do bondoso Salvador."
+    ],
+    "resposta": "135 · Mais de Cristo",
+    "pontos": 5,
+    "audio": "hinos/135.mp3"
   },
   {
     "id": 7,
-    "trecho": "Bom estarmos aqui louvando a Deus",
-    "resposta": "Bom Estarmos Aqui - Renascer Praise",
-    "pontos": 10,
-    "audio": "audio/bom-estarmos-aqui.mp3"
+    "trecho": [
+      "Alvo mais que a neve! (bis)",
+      "Sim, nesse sangue lavado,",
+      "Mais alvo que a neve eu estou."
+    ],
+    "resposta": "269 · Pureza no Sangue de Cristo",
+    "pontos": 5,
+    "audio": "hinos/269.mp3"
   },
   {
     "id": 8,
-    "trecho": "A Ele a glória, para sempre amém",
-    "resposta": "A Ele a Glória - Diante do Trono",
-    "pontos": 10,
-    "audio": "audio/a-ele-a-gloria.mp3"
+    "trecho": [
+      "Chuvas de bênçãos, chuvas de bênçãos dos céus!",
+      "Tantas nós já recebemos, outras rogamos a Deus!"
+    ],
+    "resposta": "172 · Chuvas de Bênçãos",
+    "pontos": 5,
+    "audio": "hinos/172.mp3"
   },
   {
     "id": 9,
-    "trecho": "Reina em mim com Teu poder",
-    "resposta": "Reina em Mim - Vineyard",
-    "pontos": 10,
-    "audio": "audio/reina-em-mim.mp3"
+    "trecho": [
+      "Aleluia! Toda a glória te rendemos, Senhor!",
+      "Aleluia! Tua graça imploramos. Amém."
+    ],
+    "resposta": "047 · Louvor e Glória",
+    "pontos": 5,
+    "audio": "hinos/047.mp3"
   },
   {
     "id": 10,
-    "trecho": "Nos reunimos em ajuntamento, com louvor",
-    "resposta": "Ajuntamento - Vencedores por Cristo",
-    "pontos": 10,
-    "audio": "audio/ajuntamento.mp3"
+    "trecho": [
+      "A minha fé e o meu amor",
+      "Estão firmados no Senhor, (bis)"
+    ],
+    "resposta": "093 · Firmeza na Fé",
+    "pontos": 5,
+    "audio": "hinos/093.mp3"
+  },
+  {
+    "id": 11,
+    "trecho": [
+      "Brilho celeste! Brilho celeste!",
+      "Enche a minha alma, glória do Céu!",
+      "Aleluia! Sigo cantando,",
+      "Dando louvores, pois Cristo é meu!"
+    ],
+    "resposta": "114 · Brilho Celeste",
+    "pontos": 5,
+    "audio": "hinos/114.mp3"
+  },
+  {
+    "id": 12,
+    "trecho": [
+      "Oh! Vinde, adoremos! Oh! Vinde, adoremos!",
+      "Oh! Vinde, adoremos ao nosso Senhor!"
+    ],
+    "resposta": "230 · Adoração ao Nosso Senhor",
+    "pontos": 5,
+    "audio": "hinos/230.mp3"
   }
 ]

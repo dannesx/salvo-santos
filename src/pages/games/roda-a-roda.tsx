@@ -24,8 +24,9 @@ export default function RodaARoda() {
   const [erradas, setErradas] = useState<string[]>([])
   const [confeteAtivado, setConfeteAtivado] = useState(false)
   const [mostrarRoleta, setMostrarRoleta] = useState(false)
-  const { setRodadaAtual, rodadaAtual, equipeAtual, alternarEquipe } = useAppContext() // Usando AppContext
+  const { setRodadaAtual, rodadaAtual, equipeAtual, alternarEquipe, pontuar } = useAppContext() // Adicionado pontuar do contexto
   const navigate = useNavigate()
+  const [roletaGirou, setRoletaGirou] = useState(false) // Estado para controlar se a roleta foi girada
 
   // Sons
   const audioAcerto = useRef<HTMLAudioElement | null>(null)
@@ -83,7 +84,7 @@ export default function RodaARoda() {
   }, [letrasVisiveis, palavraCompleta, revelar, confeteAtivado])
 
   const tentarLetra = () => {
-    if (!rodada || letra.trim() === "") return
+    if (!rodada || letra.trim() === "" || !roletaGirou) return // Bloqueia tentativa se a roleta não foi girada
     const upper = letra.toUpperCase()
     if (
       letrasVisiveis.some((i) => palavraCompleta[i]?.toUpperCase() === upper) ||
@@ -100,13 +101,16 @@ export default function RodaARoda() {
     if (indices.length > 0) {
       setLetrasVisiveis((prev) => Array.from(new Set([...prev, ...indices])))
       audioAcerto.current?.play()
+      pontuar(equipeAtual, rodadaAtual) // Pontua a equipe atual com o valor da roleta
     } else {
       setErradas((prev) => [...prev, upper])
       audioErro.current?.play()
     }
 
     setLetra("")
-    alternarEquipe() // Alterna a vez da equipe após a tentativa
+    setRodadaAtual(0) // Reseta rodadaAtual ao passar a vez
+    alternarEquipe() // Alterna a vez da equipe
+    setRoletaGirou(false) // Reseta o estado da roleta
   }
 
   const proximaRodada = () => {
@@ -135,6 +139,10 @@ export default function RodaARoda() {
       setConfeteAtivado(true)
       audioVitoria.current?.play()
     }
+  }
+
+  const handleGirarRoleta = () => {
+    if (!mostrarRoleta) setMostrarRoleta(true) // Abre o modal apenas se não estiver aberto
   }
 
   if (!rodada) {
@@ -206,15 +214,10 @@ export default function RodaARoda() {
         Atual: {rodadaAtual} pontos
       </div>
 
-      <div className="text-lg font-semibold text-blue-500">
-        Vez da equipe: {equipeAtual}
-      </div>
-
       <div className="flex gap-4 items-center">
         <Button
-          onClick={() => {
-            if (!mostrarRoleta) setMostrarRoleta(true) // Abre o modal apenas se não estiver aberto
-          }}
+          onClick={handleGirarRoleta}
+          disabled={roletaGirou} // Desabilita o botão de girar roleta se já foi girada
         >
           Girar Roleta
         </Button>
@@ -230,8 +233,9 @@ export default function RodaARoda() {
               tentarLetra()
             }
           }}
+          disabled={!roletaGirou} // Desabilita o input se a roleta não foi girada
         />
-        <Button onClick={tentarLetra}>Tentar Letra</Button>
+        <Button onClick={tentarLetra} disabled={!roletaGirou}>Tentar Letra</Button>
       </div>
 
       {erradas.length > 0 && (
@@ -239,12 +243,22 @@ export default function RodaARoda() {
       )}
 
       <div className="mt-4">
-        {!revelar ? (
-          <Button onClick={handleRevelar}>Revelar palavra</Button>
+        {revelar ? (
+          <>
+            <Button variant="default" onClick={proximaRodada}>
+              Próxima rodada
+            </Button>
+            <div className="flex gap-4 mt-4">
+              <Button onClick={() => pontuar("Equipe 1", 15)}>
+                Pontuar Equipe 1
+              </Button>
+              <Button onClick={() => pontuar("Equipe 2", 15)}>
+                Pontuar Equipe 2
+              </Button>
+            </div>
+          </>
         ) : (
-          <Button variant="default" onClick={proximaRodada}>
-            Próxima rodada
-          </Button>
+          <Button onClick={handleRevelar}>Revelar palavra</Button>
         )}
       </div>
 
@@ -254,8 +268,10 @@ export default function RodaARoda() {
           onResultado={(valor: number | string) => {
             if (typeof valor === "number") {
               setRodadaAtual(valor) // Define o valor da roleta
-            } else {
-              setRodadaAtual(0) // Se não for número, define como 0
+              setRoletaGirou(true) // Marca que a roleta foi girada
+            } else if (valor === "Passa a vez") {
+              setRodadaAtual(0) // Reseta o valor da rodada
+              setRoletaGirou(false) // Permite que a outra equipe gire a roleta
             }
           }}
         />

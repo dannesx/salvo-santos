@@ -4,7 +4,7 @@ import { Outlet, useLocation } from "react-router"
 import { useAppContext } from "@/contexts/app-context" // Usando AppContext
 
 const AppLayout = () => {
-  const { equipes, equipeAtual } = useAppContext() // Obtendo equipes e equipeAtual do AppContext
+  const { equipes, equipeAtual, alternarEquipe } = useAppContext() // Obtendo equipes, equipeAtual e alternarEquipe do AppContext
   const location = useLocation()
 
   const hide = ["/", "/ranking", "/config", "/jogos/musica"].includes(
@@ -25,8 +25,10 @@ const AppLayout = () => {
       />
       {/* Exibe a vez da equipe */}
       <div
-        className="text-2xl font-semibold text-primary absolute bottom-4 left-1/2 -translate-x-1/2 uppercase data-[hidden=true]:hidden"
+        className="text-5xl font-semibold text-primary absolute bottom-4 left-1/2 -translate-x-1/2 uppercase data-[hidden=true]:hidden"
         data-hidden={hide}
+        onClick={alternarEquipe} // Alterna a vez ao clicar
+        title="Clique para alternar a vez manualmente" // Adiciona um título para indicar a funcionalidade
       >
         {equipeAtual}
       </div>

@@ -1,6 +1,7 @@
 import { motion } from "framer-motion"
 import { useState, useEffect, useRef } from "react" // Adicionado useRef
 import confetti from "canvas-confetti" // Importação do confetti
+import { useAppContext } from "@/contexts/app-context" // Importação do contexto
 
 const valores = ["Passa a vez", 2, 2, 2, 3, 3, 4, 4, 5, 10]
 const anguloPorSetor = 360 / valores.length
@@ -18,6 +19,7 @@ export function RoletaModal({ onClose, onResultado }: RoletaModalProps) {
   const audioRoleta = useRef<HTMLAudioElement | null>(null) // Referência para o áudio
   const audioVitoria = useRef<HTMLAudioElement | null>(null) // Referência para o áudio de vitória
   const audioErro = useRef<HTMLAudioElement | null>(null) // Referência para o áudio de erro
+  const { alternarEquipe } = useAppContext() // Obtém alternarEquipe do contexto
 
   useEffect(() => {
     audioRoleta.current = new Audio("/sounds/roleta.ogg") // Inicializa o áudio da roleta
@@ -50,22 +52,24 @@ export function RoletaModal({ onClose, onResultado }: RoletaModalProps) {
       audioRoleta.current!.currentTime = 0 // Reseta o áudio da roleta
       setResultado(valor) // O valor sorteado já corresponde ao índice correto
       onResultado(valor)
-      if (valor === 100) {
-        // Verifica se o resultado é 100
+      if (valor === 10) {
+        // Verifica se o resultado é 10
         confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } }) // Dispara confetti
         audioVitoria.current?.play() // Toca o som de vitória
       } else if (valor === "Passa a vez") {
         // Verifica se o resultado é "Passa a vez"
         audioErro.current?.play() // Toca o som de erro
+        alternarEquipe() // Passa a vez para a outra equipe
+        setRoletaGirou(false) // Permite que a outra equipe gire a roleta
       }
-    }, 4000) // após giro
+    }, 3000) // após giro
 
     return () => {
       clearTimeout(timeout) // Limpa o timeout ao desmontar ou reiniciar
       audioRoleta.current?.pause() // Garante que o som da roleta pare
       audioRoleta.current!.currentTime = 0 // Reseta o áudio da roleta
     }
-  }, [onResultado, somTocado, roletaGirou, resultado])
+  }, [onResultado, somTocado, roletaGirou, resultado, alternarEquipe])
 
   useEffect(() => {
     if (resultado !== null) {
@@ -91,7 +95,7 @@ export function RoletaModal({ onClose, onResultado }: RoletaModalProps) {
         <motion.div
           className="rounded-full border-4 border-white w-full h-full bg-white shadow-xl overflow-hidden"
           animate={{ rotate: angulo }}
-          transition={{ duration: 4, ease: "easeInOut" }}
+          transition={{ duration: 3, ease: "easeInOut" }} // Alterado para 3 segundos
         >
           <div className="absolute inset-0 rotate-[-90deg]">
             <svg width="100%" height="100%" viewBox="0 0 200 200">
